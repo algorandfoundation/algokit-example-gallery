@@ -9,11 +9,11 @@ interface Props {
   id: Example["id"];
   type: Example["type"];
   author: Example["author"];
-  githubUrl: Example["links"]["source"];
+  repositoryUrl: Example["repositoryUrl"];
   tags: Example["tags"];
 }
 
-const { title, id, type, author, githubUrl, tags }: Props = Astro.props;
+const { title, id, type, author, repositoryUrl, tags }: Props = Astro.props;
 ---
 
 <div
@@ -25,8 +25,8 @@ const { title, id, type, author, githubUrl, tags }: Props = Astro.props;
 <div class="flex items-center gap-2">
   <p class="text-sm">Creator {author}</p>
   {
-    githubUrl && (
-      <a href={githubUrl} target="_blank" class="github-link">
+    repositoryUrl && (
+      <a href={repositoryUrl} target="_blank" class="github-link">
         <div class="flex items-center gap-1">
           <Icon name="mdi:github" />
           <span class="text-sm link">Source</span>

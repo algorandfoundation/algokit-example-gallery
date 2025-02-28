@@ -1,0 +1,61 @@
+---
+import type { Example } from "@/types/example";
+import path from "node:path";
+import MarkdownContent from "@/components/MarkdownContent.astro";
+import CodeContent from "@/components/CodeContent.astro";
+
+type Props = {
+  id: Example["id"];
+  detailsPages: Example["detailsPages"];
+};
+const { id, detailsPages } = Astro.props;
+
+// Get the required README content
+const readMePath = path.resolve(
+  "algokit-templates/examples",
+  `${id}/README.md`
+);
+
+// Get the optional other details pages
+const { smartContract } = detailsPages ?? {};
+let smartContractPath;
+if (smartContract) {
+  smartContractPath = path.resolve(`algokit-templates/${smartContract}`);
+}
+---
+
+<div class="tabs tabs-border tabs-xl">
+  <input
+    type="radio"
+    name="details_pages_tab"
+    checked="checked"
+    class="tab"
+    aria-label="README"
+  />
+  <div class="tab-content">
+    <MarkdownContent path={readMePath} />
+  </div>
+  {
+    smartContractPath && (
+      <>
+        <input
+          type="radio"
+          name="details_pages_tab"
+          class="tab"
+          aria-label="Smart Contract"
+        />
+        <div class="tab-content">
+          <CodeContent path={smartContractPath} />
+        </div>
+      </>
+    )
+  }
+</div>
+
+<style>
+  @reference "@/styles/global.css";
+
+  .tab-content {
+    @apply p-6;
+  }
+</style>

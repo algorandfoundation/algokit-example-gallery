@@ -1,9 +1,13 @@
 ---
+import type { Examples } from "@/types/example";
 import AlgokitExampleCard from "../components/AlgokitExampleCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { fetchExamplesYaml } from "../data";
+import { yamlToObject } from "../utils/yaml";
+import path from "node:path";
 
-const examples = await fetchExamplesYaml();
+const yamlFilePath = path.resolve("algokit-templates/examples/examples.yml");
+
+const { examples } = await yamlToObject<Examples>(yamlFilePath);
 ---
 
 <Layout title="Example Gallery">

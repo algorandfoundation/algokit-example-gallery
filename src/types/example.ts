@@ -7,11 +7,9 @@ export interface Example {
   image: string;
   tags: string[];
   features: string[];
-  links: {
-	source: string;
-    demo?: string;
-    codespaces?: string;
-    codesandbox?: string;
+  repositoryUrl: string;
+  detailsPages?: {
+    smartContract?: string;
   };
 }
 

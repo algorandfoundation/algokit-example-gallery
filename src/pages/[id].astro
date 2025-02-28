@@ -2,13 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 import { fetchExamplesYaml } from "../data";
 import { Icon } from "astro-icon/components";
-import DemoLinks from "@/components/detail-page/DemoLinks.astro";
 import DescriptionPanel from "@/components/detail-page/DescriptionPanel.astro";
-import Tag from "@/components/Tag.astro";
 import ExampleHeader from "@/components/detail-page/ExampleHeader.astro";
-import { getGithubFileContents } from "@/utils/github";
+import path from "node:path";
+import { yamlToObject } from "../utils/yaml";
+import type { Examples } from "@/types/example";
+import DetailsPages from "@/components/detail-page/DetailsPages.astro";
+
 export async function getStaticPaths() {
-  const examples = await fetchExamplesYaml();
+  const yamlFilePath = path.resolve("algokit-templates/examples/examples.yml");
+  const { examples } = await yamlToObject<Examples>(yamlFilePath);
+
   return examples.map((example) => ({
     params: { id: example.id },
     props: { example },
@@ -16,17 +20,20 @@ export async function getStaticPaths() {
 }
 
 const { example } = Astro.props;
-const { id, title, description, image, tags, links, author, features, type } =
-  example;
-const githubUrl = links.source;
-// Add dynamic import using the title
-console.log(
-  `https://api.github.com/lempira/template-gallery-spike/main/examples/${id}/README.md`
-);
-const Content = await getGithubFileContents(`examples/${id}/README.md`);
+const {
+  id,
+  title,
+  description,
+  image,
+  tags,
+  repositoryUrl,
+  author,
+  features,
+  type,
+  detailsPages,
+} = example;
 
-// const Content = response ? await response.text() : null;
-console.log({ Content });
+// Add dynamic import using the title
 ---
 
 <Layout title={title}>
@@ -43,7 +50,7 @@ console.log({ Content });
         id={id}
         type={type}
         author={author}
-        githubUrl={githubUrl}
+        repositoryUrl={repositoryUrl}
         tags={tags}
       />
     </div>
@@ -53,13 +60,6 @@ console.log({ Content });
       image={image}
       title={title}
     />
-    <div
-      class="prose dark:prose-invert
-  prose-h1:font-bold prose-h1:text-xl
-  prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
-  prose-headings:underline"
-    >
-      {Content}
-    </div>
+    <DetailsPages id={id} detailsPages={detailsPages} />
   </main>
 </Layout>

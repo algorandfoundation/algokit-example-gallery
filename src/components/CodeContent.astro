@@ -1,0 +1,21 @@
+---
+import { Code } from "astro:components";
+import { readCodeFile } from "@/utils/read-local-file";
+
+type Props = {
+  path: string;
+};
+
+const { path } = Astro.props;
+
+// Read the code file content
+const code = await readCodeFile(path);
+
+type CodeLang = Parameters<typeof Code>[0]["lang"];
+
+const fileExtension = (path.split(".").pop() ?? "plaintext") as CodeLang;
+---
+
+<div class="not-prose rounded-lg overflow-hidden">
+  <Code code={code} lang={fileExtension} theme="github-dark" />
+</div>
