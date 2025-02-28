@@ -1,0 +1,3 @@
+[submodule "algokit-templates"]
+	path = algokit-templates
+	url = https://github.com/algorandfoundation/algokit-templates.git
