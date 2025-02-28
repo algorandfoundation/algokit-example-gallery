@@ -1,0 +1,32 @@
+---
+import type { Example } from "../../types/example";
+import Feature from "./Feature.astro";
+interface DescriptionPanelProps {
+  description: Example["description"];
+  features: Example["features"];
+  image: Example["image"];
+  title: Example["title"];
+}
+
+const { description, features, image, title } =
+  Astro.props as DescriptionPanelProps;
+---
+
+<div class="flex flex-col-reverse gap-6 md:flex-row">
+  <div class="basis-2/4 flex flex-col gap-5">
+    <p class="text">{description}</p>
+    {
+      features && (
+        <div class="flex flex-col gap-2">
+          <h2 class="text-lg font-bold">Features</h2>
+          {features.map((feature) => (
+            <Feature feature={feature} />
+          ))}
+        </div>
+      )
+    }
+  </div>
+  <div class="basis-3/4">
+    <img src={image} alt={title} class="" />
+  </div>
+</div>

@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@layer root {
+  /* Set default font to Inter */
+  html {
+    font-family: "inter", sans-serif;
+  }
+  
+  /* Style all heading tags with Aeonik */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "aeonik", sans-serif;
+  }
+}
+
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "algorand";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: #fafbff;
+  --color-base-200: #f2f4fc;
+  --color-base-300: #e9ecf9;
+  --color-base-content: #282c42;
+
+  /* Updated primary color to match the top color in the image */
+  --color-primary: #2d2df1;
+
+  /* Gradient colors from the image */
+  --color-primary-focus: #4444ed;
+  --color-primary-light: #5858f0;
+  --color-primary-lighter: #6c6cf1;
+  --color-primary-lightest: #8080f3;
+
+  /* Medium shades */
+  --color-secondary: #9595f5;
+  --color-secondary-focus: #a9a9f6;
+  --color-secondary-light: #bfbff9;
+
+  /* Lightest shades */
+  --color-accent: #ffffff;
+  --color-accent-light: #e9e9fd;
+
+  /* Content colors */
+  --color-primary-content: #ffffff;
+  --color-secondary-content: #f8faff;
+  --color-accent-content: #f8fff8;
+  --color-neutral: #4c5177;
+  --color-neutral-content: #f8f9ff;
+
+  /* Utility colors */
+  --color-info: #5b8ed1;
+  --color-info-content: #f8faff;
+  --color-success: #27a853;
+  --color-success-content: #f8fff8;
+  --color-warning: #d4a636;
+  --color-warning-content: #332d1f;
+  --color-error: #d13b34;
+  --color-error-content: #fff8f8;
+}
+
+@plugin "daisyui/theme" {
+  name: "algorand";
+  color-scheme: dark;
+
+  /* Dark theme base colors */
+  --color-base-100: #0a1a1a;
+  --color-base-200: #0e2222;
+  --color-base-300: #123333;
+  --color-base-content: #e7faf9;
+
+  /* Primary color from image (100%) */
+  --color-primary: #17cac6;
+  --color-primary-content: #0a1a1a;
+
+  /* Secondary colors from the image */
+  --color-secondary: #2ecfcc; 
+  --color-secondary-content: #0a1a1a;
+
+  /* Accent colors */
+  --color-accent: #FF7F48;
+  --color-accent-content: #0a1a1a;
+
+  /* Additional theme colors from the palette */
+  --color-neutral: #5cdad7;
+  --color-neutral-content: #0a1a1a;
+
+  /* Utility colors with teal theme */
+  --color-info: #74dfdd;
+  --color-info-content: #0a1a1a;
+  --color-success: #8be4e2;
+  --color-success-content: #0a1a1a;
+  --color-warning: #a2eae8;
+  --color-warning-content: #0a1a1a;
+  --color-error: #b9efee;
+  --color-error-content: #0a1a1a;
+
+  /* Highlighted elements */
+  --color-highlight: #d1f4f4;
+  --color-highlight-content: #0a1a1a;
+}
+
+/* Custom Font Declarations */
+@font-face {
+  font-family: 'aeonik';
+  src: url('/fonts/aeonik/Aeonik-Regular.woff2') format('woff2'),
+       url('/fonts/aeonik/Aeonik-Regular.woff') format('woff'),
+       url('/fonts/aeonik/Aeonik-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* If you have different weights/styles, add them separately */
+@font-face {
+  font-family: 'inter';
+  src: url('/fonts/inter/Inter-Bold.woff2') format('woff2'),
+       url('/fonts/inter/Inter-Bold.woff') format('woff'),
+       url('/fonts/inter/Inter-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}

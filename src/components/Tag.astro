@@ -1,0 +1,10 @@
+---
+import type { Example } from "@/types/example";
+
+interface Props {
+  tag: Example["tags"][number];
+}
+const { tag }: Props = Astro.props;
+---
+
+<div class="badge badge-primary badge-sm font-semibold rounded-sm">{tag}</div>

@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon/components";
+import { type Example } from "@/types/example";
+import {
+  DEMOAPP_DOMAIN,
+  CODESANDBOX_DOMAIN,
+  CODESPACE_DOMAIN,
+} from "@/config.ts";
+
+interface Props {
+  id: Example["id"];
+  type: Example["type"];
+}
+
+const { id, type } = Astro.props;
+
+const links = {
+  codespaces: `${CODESPACE_DOMAIN}/tree/examples/${id}`,
+  codesandbox: `${CODESANDBOX_DOMAIN}/tree/main/examples/${id}`,
+  demo: `${DEMOAPP_DOMAIN}/${id}/`,
+};
+const showCodespaces = ["smart-contract", "dapp"].includes(type);
+const showCodesandbox = ["frontend"].includes(type);
+const showDemo = ["frontend"].includes(type);
+---
+
+<div class="flex gap-2">
+  {
+    showCodespaces && (
+      <a
+        href={links.codespaces}
+        target="_blank"
+        class="btn btn-xs md:btn-sm"
+        style={{
+          backgroundColor: "#333",
+          color: "#fff",
+          border: "none",
+        }}
+      >
+        <Icon name="mdi:github" />
+        <span>Codespace</span>
+      </a>
+    )
+  }
+  {
+    showCodesandbox && (
+      <a
+        href={links.codesandbox}
+        target="_blank"
+        class="btn btn-xs md:btn-sm"
+        style={{
+          backgroundColor: "#ffec5c",
+          color: "#333",
+          border: "none",
+        }}
+      >
+        <Icon name="mdi:square" />
+        <span>CodeSandbox</span>
+      </a>
+    )
+  }
+  {
+    showDemo && (
+      <a
+        href={links.demo}
+        target="_blank"
+        class="btn btn-primary btn-xs md:btn-sm"
+      >
+        <span>Visit Demo</span>
+        <Icon name="mdi:open-in-new" />
+      </a>
+    )
+  }
+</div>

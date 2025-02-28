@@ -1,0 +1,14 @@
+---
+import type { Example } from "@/types/example";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  feature: Example["features"][number];
+}
+const { feature }: Props = Astro.props;
+---
+
+<div class="flex gap-2 items-center">
+  <Icon name="check" />
+  <span class="text md:text-lg">{feature}</span>
+</div>
