@@ -24,12 +24,12 @@ if (smartContract) {
 }
 ---
 
-<div class="tabs tabs-border tabs-xl">
+<div class="tabs tabs-border md:tabs-xl">
   <input
     type="radio"
     name="details_pages_tab"
     checked="checked"
-    class="tab"
+    class="tab tab-label"
     aria-label="README"
   />
   <div class="tab-content">
@@ -41,7 +41,7 @@ if (smartContract) {
         <input
           type="radio"
           name="details_pages_tab"
-          class="tab"
+          class="tab tab-label"
           aria-label="Smart Contract"
         />
         <div class="tab-content">
@@ -54,8 +54,10 @@ if (smartContract) {
 
 <style>
   @reference "@/styles/global.css";
-
+  .tab-label {
+    @apply font-semibold;
+  }
   .tab-content {
-    @apply p-6;
+    @apply p-3 md:p-6;
   }
 </style>

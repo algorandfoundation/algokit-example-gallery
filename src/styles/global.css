@@ -14,10 +14,10 @@
 }
 
 @plugin "daisyui";
+
 @plugin "daisyui/theme" {
-  name: "algorand";
-  default: true;
-  color-scheme: light;
+  name: "algorand-light";
+  
 
   --color-base-100: #fafbff;
   --color-base-200: #f2f4fc;
@@ -61,8 +61,7 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "algorand";
-  color-scheme: dark;
+  name: "algorand-dark";
 
   /* Dark theme base colors */
   --color-base-100: #0a1a1a;
@@ -100,6 +99,11 @@
   --color-highlight: #d1f4f4;
   --color-highlight-content: #0a1a1a;
 }
+
+
+
+@custom-variant dark (&:where([data-theme="algorand-dark"], [data-theme="algorand-dark"] *));
+
 
 /* Custom Font Declarations */
 @font-face {
