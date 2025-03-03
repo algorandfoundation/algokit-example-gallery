@@ -1,13 +1,12 @@
 ---
 type Props = {
-  path: string;
+  id: string;
 };
 
-const { path } = Astro.props;
+const { id } = Astro.props;
 
 const { Content } = await import(
-  /* @vite-ignore */
-  path
+  `../../algokit-templates/examples/${id}/README.md`
 );
 ---
 
