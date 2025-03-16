@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "update-templates": "git submodule update --init --recursive --remote"
   },
   "dependencies": {
     "@iconify-json/mdi": "^1.2.3",
