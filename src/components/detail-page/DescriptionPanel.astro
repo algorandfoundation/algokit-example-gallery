@@ -4,12 +4,13 @@ import Feature from "./Feature.astro";
 interface DescriptionPanelProps {
   description: Example["description"];
   features: Example["features"];
-  image: Example["image"];
   title: Example["title"];
+  type: Example["type"];
 }
 
-const { description, features, image, title } =
+const { description, features, title, type } =
   Astro.props as DescriptionPanelProps;
+Astro.props as DescriptionPanelProps;
 ---
 
 <div class="flex flex-col-reverse gap-6 md:flex-row">
@@ -27,6 +28,15 @@ const { description, features, image, title } =
     }
   </div>
   <div class="basis-3/4">
-    <img src={image} alt={title} class="" />
+    <img
+      src={`/images/algokit-gallery-${type}-light.png`}
+      alt={title}
+      class="w-full dark:hidden"
+    />
+    <img
+      src={`/images/algokit-gallery-${type}-dark.png`}
+      alt={title}
+      class="w-full hidden dark:block"
+    />
   </div>
 </div>
