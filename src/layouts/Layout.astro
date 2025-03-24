@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+import { Image } from 'astro:assets';
+import logoLight from '/src/assets/images/algokit-logo-color-RGB.svg';
+import logoDark from '/src/assets/images/algokit-logo-white-teal-RGB.svg';
 ---
 
 <!doctype html>
@@ -15,20 +18,11 @@ import "../styles/global.css";
     <div
       class="navbar bg-base-100 shadow-sm fixed top-0 left-0 right-0 z-50 h-[75px]"
     >
-      <div class="flex-1 flex items-center gap-2 h-full">
+      <div class="flex-1 flex items-center gap-2 h-auto">
         <div class="h-full">
-          <img
-            src="/images/algokit-logo-color-RGB.svg"
-            alt="AlgoKit Logo"
-            class="h-full w-full object-contain block dark:hidden"
-          />
-          <img
-            src="/images/algokit-logo-white-teal-RGB.svg"
-            alt="AlgoKit Logo"
-            class="h-full w-full object-contain hidden dark:block"
-          />
+          <Image src={logoLight} alt="AlgoKit Logo" class="object-contain block dark:hidden" width={200} />
+          <Image src={logoDark} alt="AlgoKit Logo" class="object-contain hidden dark:block" width={200} />
         </div>
-        <span class="text-3xl font-bold text-primary">Gallery</span>
       </div>
       <div class="flex-none mr-3">
         <label class="swap swap-rotate">

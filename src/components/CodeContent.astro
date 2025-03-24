@@ -16,6 +16,6 @@ type CodeLang = Parameters<typeof Code>[0]["lang"];
 const fileExtension = (path.split(".").pop() ?? "plaintext") as CodeLang;
 ---
 
-<div class="not-prose rounded-lg overflow-hidden">
-  <Code code={code} lang={fileExtension} theme="github-dark" />
+<div class="not-prose rounded-lg overflow-hidden border border-[var(--code-border)] bg-[var(--code-bg)]">
+  <Code code={code} lang={fileExtension} />
 </div>
