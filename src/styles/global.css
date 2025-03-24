@@ -6,9 +6,14 @@
   html {
     font-family: "inter", sans-serif;
   }
-  
+
   /* Style all heading tags with Aeonik */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: "aeonik", sans-serif;
   }
 }
@@ -17,7 +22,6 @@
 
 @plugin "daisyui/theme" {
   name: "algorand-light";
-  
 
   --color-base-100: #fafbff;
   --color-base-200: #f2f4fc;
@@ -74,11 +78,11 @@
   --color-primary-content: #0a1a1a;
 
   /* Secondary colors from the image */
-  --color-secondary: #2ecfcc; 
+  --color-secondary: #2ecfcc;
   --color-secondary-content: #0a1a1a;
 
   /* Accent colors */
-  --color-accent: #FF7F48;
+  --color-accent: #ff7f48;
   --color-accent-content: #0a1a1a;
 
   /* Additional theme colors from the palette */
@@ -100,17 +104,14 @@
   --color-highlight-content: #0a1a1a;
 }
 
-
-
 @custom-variant dark (&:where([data-theme="algorand-dark"], [data-theme="algorand-dark"] *));
-
 
 /* Custom Font Declarations */
 @font-face {
-  font-family: 'aeonik';
-  src: url('/fonts/aeonik/Aeonik-Regular.woff2') format('woff2'),
-       url('/fonts/aeonik/Aeonik-Regular.woff') format('woff'),
-       url('/fonts/aeonik/Aeonik-Regular.ttf') format('truetype');
+  font-family: "aeonik";
+  src: url("/src/assets/fonts/aeonik/Aeonik-Regular.woff2") format("woff2"),
+    url("/src/assets/fonts/aeonik/Aeonik-Regular.woff") format("woff"),
+    url("/src/assets/fonts/aeonik/Aeonik-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -118,10 +119,10 @@
 
 /* If you have different weights/styles, add them separately */
 @font-face {
-  font-family: 'inter';
-  src: url('/fonts/inter/Inter-Bold.woff2') format('woff2'),
-       url('/fonts/inter/Inter-Bold.woff') format('woff'),
-       url('/fonts/inter/Inter-Bold.ttf') format('truetype');
+  font-family: "inter";
+  src: url("/src/assets/fonts/inter/Inter-Bold.woff2") format("woff2"),
+    url("/src/assets/fonts/inter/Inter-Bold.woff") format("woff"),
+    url("/src/assets/fonts/inter/Inter-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
