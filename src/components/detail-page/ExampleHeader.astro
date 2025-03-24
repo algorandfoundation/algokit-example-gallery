@@ -13,7 +13,9 @@ interface Props {
   tags: Example["tags"];
 }
 
-const { title, id, type, author, repositoryUrl, tags }: Props = Astro.props;
+const { title, id, type, author, tags }: Props = Astro.props;
+
+const repositoryUrl = `https://github.com/algorandfoundation/algokit-templates/tree/main/examples/${id}`;
 ---
 
 <div

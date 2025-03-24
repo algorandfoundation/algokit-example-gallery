@@ -6,6 +6,9 @@ import {
   CODESANDBOX_DOMAIN,
   CODESPACE_DOMAIN,
 } from "@/config.ts";
+import fs from 'node:fs';
+import path from 'node:path';
+import { getFrontendPath } from '@/utils/workspace';
 
 interface Props {
   id: Example["id"];
@@ -14,9 +17,13 @@ interface Props {
 
 const { id, type } = Astro.props;
 
+// Check for workspace file and get frontend path
+let frontendPath = "";
+frontendPath = getFrontendPath(id) || "";
+
 const links = {
   codespaces: `${CODESPACE_DOMAIN}/tree/examples/${id}`,
-  codesandbox: `${CODESANDBOX_DOMAIN}/tree/main/examples/${id}`,
+  codesandbox: `${CODESANDBOX_DOMAIN}/tree/main/examples/${id}${frontendPath ? '/' + frontendPath : ''}`,
   demo: `${DEMOAPP_DOMAIN}/${id}/`,
 };
 const showCodespaces = ["smart-contract", "dapp"].includes(type);
