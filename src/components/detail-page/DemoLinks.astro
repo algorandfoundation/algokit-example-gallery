@@ -23,10 +23,10 @@ frontendPath = getFrontendPath(id) || "";
 
 const links = {
   codespaces: `${CODESPACE_DOMAIN}/tree/examples/${id}`,
-  codesandbox: `${CODESANDBOX_DOMAIN}/tree/main/examples/${id}${frontendPath ? '/' + frontendPath : ''}`,
+  codesandbox: `${CODESANDBOX_DOMAIN}/tree/examples/${id}${frontendPath ? '/' + frontendPath : ''}`,
   demo: `${DEMOAPP_DOMAIN}/${id}/`,
 };
-const showCodespaces = ["smart-contract", "dapp"].includes(type);
+const showCodespaces = ["smart-contract", "fullstack", "frontend"].includes(type);
 const showCodesandbox = ["frontend"].includes(type);
 const showDemo = ["frontend"].includes(type);
 ---
@@ -49,7 +49,8 @@ const showDemo = ["frontend"].includes(type);
       </a>
     )
   }
-  {
+  <!-- TODO: Fix codesandbox link -->
+  <!-- {
     showCodesandbox && (
       <a
         href={links.codesandbox}
@@ -65,7 +66,7 @@ const showDemo = ["frontend"].includes(type);
         <span>CodeSandbox</span>
       </a>
     )
-  }
+  } -->
   {
     showDemo && (
       <a
