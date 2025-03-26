@@ -10,6 +10,14 @@ import "../styles/global.css";
     <link rel="icon" type="image/png" href="/algo-favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>Algokit Examples Gallery</title>
+    
+    <!-- Add this script before any content renders -->
+    <script is:inline>
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (prefersDark ? "algorand-dark" : "algorand-light");
+      document.documentElement.setAttribute("data-theme", theme);
+    </script>
   </head>
   <body>
     <div
