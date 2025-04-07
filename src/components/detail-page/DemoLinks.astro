@@ -26,7 +26,8 @@ const links = {
   codesandbox: `${CODESANDBOX_DOMAIN}/tree/examples/${id}${frontendPath ? '/' + frontendPath : ''}`,
   demo: `${DEMOAPP_DOMAIN}/${id}/`,
 };
-const showCodespaces = ["smart-contract", "fullstack", "frontend"].includes(type);
+
+const showCodespaces = ["smart-contract", "fullstack", "frontend", "script"].includes(type);
 const showCodesandbox = ["frontend"].includes(type);
 const showDemo = ["frontend"].includes(type);
 ---
