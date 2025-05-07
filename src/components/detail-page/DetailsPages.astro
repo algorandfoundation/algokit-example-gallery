@@ -17,11 +17,16 @@ const readMePath = path.resolve(
 );
 
 // Get the optional other details pages
-const { smartContract } = detailsPages ?? {};
+const { smartContract, notebook } = detailsPages ?? {};
 let smartContractPath;
 if (smartContract) {
   smartContractPath = path.resolve(`algokit-templates/${smartContract}`);
 }
+let notebookPath;
+if (notebook) {
+  notebookPath = path.resolve(`algokit-templates/${notebook}`);
+}
+console.log({notebookPath, notebook})
 ---
 
 <div class="tabs tabs-border md:tabs-xl">
@@ -47,6 +52,19 @@ if (smartContract) {
         <div class="tab-content">
           <CodeContent path={smartContractPath} />
         </div>
+      </>
+    )
+  }
+  {
+    notebookPath && (
+      <>
+      <input
+          type="radio"
+          name="details_pages_tab"
+          class="tab tab-label"
+          aria-label="Smart Contract"
+        />
+        <div class="tab-content"/>
       </>
     )
   }

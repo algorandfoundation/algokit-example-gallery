@@ -7,6 +7,7 @@ interface Props {
 
 const { example } = Astro.props;
 const { id, title, description, type } = example;
+console.log(type);
 const cardType = type.replace(/-/g, " ");
 ---
 

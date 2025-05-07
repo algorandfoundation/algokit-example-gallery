@@ -1,6 +1,6 @@
 export interface Example {
   id: string;
-  type: "smart-contract" | "dapp" | "frontend";
+  type: "smart-contract" | "dapp" | "frontend" | "notebook";
   author: string;
   title: string;
   description: string;
@@ -10,6 +10,7 @@ export interface Example {
   repositoryUrl: string;
   detailsPages?: {
     smartContract?: string;
+    notebook?: string;
   };
 }
 
