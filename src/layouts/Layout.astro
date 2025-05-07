@@ -18,10 +18,31 @@ import "../styles/global.css";
       const theme = savedTheme || (prefersDark ? "algorand-dark" : "algorand-light");
       document.documentElement.setAttribute("data-theme", theme);
     </script>
+    <link
+      rel="preload"
+      href="/src/assets/fonts/aeonik/Aeonik-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/src/assets/fonts/inter/Inter-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/src/assets/fonts/inter/Inter-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <div
-      class="navbar bg-base-100 shadow-sm fixed top-0 left-0 right-0 z-50 h-[75px] px-8"
+      class="navbar bg-base-100 shadow-sm fixed top-0 left-0 right-0 z-50 h-[75px] px-3 md:px-8"
     >
       <div class="flex-1 flex items-center gap-2 h-full">
         <div class="h-full">
