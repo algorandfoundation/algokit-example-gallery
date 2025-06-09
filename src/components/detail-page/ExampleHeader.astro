@@ -24,25 +24,27 @@ const repositoryUrl = `https://github.com/algorandfoundation/algokit-templates/t
   <h1 class="text-2xl md:text-4xl font-bold">{title}</h1>
   <DemoLinks id={id} type={type} />
 </div>
-<div class="flex items-center gap-2">
-  <p class="text-sm">Creator {author}</p>
+<div class="flex flex-col gap-2 pt-2">
+  <div class="flex items-center gap-2">
+    <p class="text-sm">Creator {author}</p>
+    {
+      repositoryUrl && (
+        <a href={repositoryUrl} target="_blank" class="github-link">
+          <div class="flex items-center gap-1">
+            <Icon name="mdi:github" />
+            <span class="text-sm link">Source</span>
+          </div>
+        </a>
+      )
+    }
+  </div>
   {
-    repositoryUrl && (
-      <a href={repositoryUrl} target="_blank" class="github-link">
-        <div class="flex items-center gap-1">
-          <Icon name="mdi:github" />
-          <span class="text-sm link">Source</span>
-        </div>
-      </a>
+    tags && (
+      <div class="flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <Tag tag={tag} />
+        ))}
+      </div>
     )
   }
 </div>
-{
-  tags && (
-    <div class="flex flex-wrap gap-2">
-      {tags.map((tag) => (
-        <Tag tag={tag} />
-      ))}
-    </div>
-  )
-}

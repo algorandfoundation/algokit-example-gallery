@@ -11,7 +11,7 @@ const { examples } = await yamlToObject<Examples>(yamlFilePath);
 ---
 
 <Layout title="Example Gallery">
-  <main class="pt-[64px]">
+  <main>
     <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-8 p-8">
       {examples.map((example) => <AlgokitExampleCard example={example} />)}
     </div>

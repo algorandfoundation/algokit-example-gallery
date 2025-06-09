@@ -1,0 +1,76 @@
+---
+interface Props {
+  title: string;
+  code: string;
+}
+
+const { title, code } = Astro.props;
+
+const uniqueId = `copy-btn-${btoa(code).replace(/[+/=]/g, "").slice(0, 24)}`;
+---
+
+<div
+  class="bg-base-100 rounded-lg border border-base-300 overflow-hidden shadow-sm"
+>
+  <div
+    class="flex justify-between items-center px-3 py-2 bg-base-200 border-b border-base-300"
+  >
+    <span class="text-xs text-base-content font-medium">{title}</span>
+    <button id={uniqueId} class="btn btn-xs btn-ghost text-xs" data-code={code}>
+      <span class="copy-text">Copy</span>
+      <span class="copied-text hidden">Copied!</span>
+    </button>
+  </div>
+  <pre
+    class="px-3 py-4 text-base font-mono bg-base-100 overflow-x-auto flex items-center">
+    <code>{code}</code>
+  </pre>
+</div>
+
+<script is:inline define:vars={{ uniqueId }}>
+  document.addEventListener("DOMContentLoaded", function () {
+    const copyButton = document.getElementById(uniqueId);
+
+    if (copyButton) {
+      copyButton.addEventListener("click", async function (event) {
+        const target = event.currentTarget;
+        const code = target.getAttribute("data-code");
+        const copyText = target.querySelector(".copy-text");
+        const copiedText = target.querySelector(".copied-text");
+
+        if (!code || !copyText || !copiedText) return;
+
+        try {
+          await navigator.clipboard.writeText(code);
+
+          // Show "Copied!" feedback
+          copyText.classList.add("hidden");
+          copiedText.classList.remove("hidden");
+
+          // Reset back to "Copy" after 2 seconds
+          setTimeout(() => {
+            copyText.classList.remove("hidden");
+            copiedText.classList.add("hidden");
+          }, 2000);
+        } catch (err) {
+          console.error("Failed to copy code: ", err);
+          // Fallback for older browsers
+          const textArea = document.createElement("textarea");
+          textArea.value = code;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textArea);
+
+          // Show feedback even for fallback
+          copyText.classList.add("hidden");
+          copiedText.classList.remove("hidden");
+          setTimeout(() => {
+            copyText.classList.remove("hidden");
+            copiedText.classList.add("hidden");
+          }, 2000);
+        }
+      });
+    }
+  });
+</script>
